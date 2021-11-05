@@ -1,0 +1,52 @@
+import java.util.Scanner;
+ 
+
+public class MyClass {
+
+    public static void main(String[] args) {
+
+        Scanner ent = new Scanner(System.in);
+
+        String nome;
+
+        double grau;
+
+        int i, contMergulhador = 0;
+        
+        for(i = 0; i < 3; i++){
+            
+            contMergulhador++;
+            
+            //Nome do Mergulhador
+            System.out.println("Informe NOME do Mergulhador:\n");
+            nome = ent.nextLine();
+            
+            //Grau de Dificuldade
+            System.out.println("Mergulhador " + contMergulhador + ", digite grau de dificuldade: ");
+            grau = ent.nextInt();
+            
+            Scanner teclado = new Scanner(System.in);
+            long vec[] = new long[7];
+            long maior = Integer.MIN_VALUE, // Menor valor, qualquer valor vai ser MAIOR que ele mesmo;
+                 menor = Integer.MAX_VALUE, // Maior valor, qualquer valor vai ser MENOR que ele mesmo;
+                 media = 0;
+            for(int x = 0; x < vec.length; x++){
+                System.out.println("Digite o " + (x + 1) + "º de " + vec.length + " números:");
+                vec[x] = teclado.nextLong();
+                media += vec[x];
+                if(vec[x] < menor){
+                    menor = vec[x];
+                }
+                if(vec[x] > maior){
+                    maior = vec[x];
+                }
+            }
+            System.out.println("Mergulhador(a) " + nome);
+            System.out.println("Grau de dificuldade " + grau);
+            System.out.println("Maior Nota descartada: " + maior + ";\n" +
+                "Menor nota descartada: " + menor + ";\n" +
+                "Média das notas foi: " + ((media-maior-menor) * grau)  + ".");
+        }       
+    }
+
+}
